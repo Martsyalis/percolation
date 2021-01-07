@@ -4,19 +4,19 @@ How much of cable should be made of conductive material to insure current passes
 This very important scientific question can only be reliable answered through a computer simulation(as of yet no math proof) so it makes for a great coding exersise. 
 
 Percolation occurs when a square in the bottom row is connected through neighboring open squares to the top row. so below image percolates:
-x = closed;  0 = open;
-x x x x 0
-x x 0 0 0
-x x 0 x x
-x 0 0 x x
-x 0 x x x
+x = closed;  0 = open;  
+x x x x 0  
+x x 0 0 0  
+x x 0 x x  
+x 0 0 x x  
+x 0 x x x  
 
-While this one does not:
-x x x x 0
-x x x x 0
-x x 0 x x
-x 0 0 x x
-x 0 x x x
+While this one does not:  
+x x x x 0  
+x x x x 0  
+x x 0 x x  
+x 0 0 x x  
+x 0 x x x  
 
 To figure out the ratio of open to closed squares needed for percolation, we simply need to run sufficianly large ammount of experiments (at least thousands) on a sufficiently large squares(at least thousands). for each of the experiments we need to open a random square, and check if it percolates. Once the system percolates, we divide open squares by the total number of squares to get our ratio. 
 
