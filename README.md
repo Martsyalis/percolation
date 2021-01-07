@@ -35,3 +35,5 @@ That way, to check if system percolates we can simply check whether v1 is connec
 confidence intervals way above 95% (see PercolationStats.java) with diviation in 0.01 range.  
 
 This aproach does introduce backwash: once the percolation occurs, every node thats connected to the bottom row will compute as full(connected to top row) but this can be solved by implmenting another weighted union find with a single virtual node at the top, so that only if elements are 'full' in both of these UF classes, do we mark them as 'full'. Although this doubles out computational and memory cost, the end result is still 2N memory usage and array instantiation cost and constant worst case compares for percolates() open() and find().   
+
+Oh yes, its 0.593 (the ratio of open squares needed for percolation)
