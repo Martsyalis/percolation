@@ -1,5 +1,4 @@
-import edu.princeton.cs.algs4.StdRandom;
-import edu.princeton.cs.algs4.StdStats;
+import java.util.Random;
 
 public class PercolationStats {
     private static final double C_I_RANGE = 1.96;
@@ -28,11 +27,14 @@ public class PercolationStats {
         }
     }
 
+ 
     private void openRandomClosed(Percolation p) {
+        Random rand = new Random();
+
         boolean closed = false;
         while (!closed) {
-            int random1 = StdRandom.uniform(1, width + 1);
-            int random2 = StdRandom.uniform(1, width + 1);
+            int random1 = rand.nextInt(width) + 1;
+            int random2 = rand.nextInt(width) + 1;
             if (!p.isOpen(random1, random2)) {
                 closed = true;
                 p.open(random1, random2);
@@ -42,12 +44,21 @@ public class PercolationStats {
 
     // sample mean of percolation threshold
     public double mean() {
-        return StdStats.mean(thresholds);
+        double sum = 0.0;
+        for(int i = 0; i < thresholds.length ; i++){
+            sum += thresholds[i];
+        }
+        return sum / thresholds.length;
     }
 
     // sample standard deviation of percolation threshold
     public double stddev() {
-        return StdStats.stddev(thresholds);
+        double standardDeviation = 0.0;
+        double calculatedMean = mean();
+        for(double num: thresholds) {
+            standardDeviation += Math.pow(num - calculatedMean, 2);
+        }
+        return standardDeviation;
     }
 
     // low endpoint of 95% confidence interval
@@ -69,12 +80,10 @@ public class PercolationStats {
         int t = Integer.parseInt(args[1]);
         double[] ci = new double[2];
         PercolationStats p = new PercolationStats(n, t);
-        ci[0] = p.confidenceLo();
-        ci[1] = p.confidenceHi();
         System.out.println("mean() = " + p.mean());
         System.out.println("stddev() = " + p.stddev());
         System.out
-                .println("95% confidence interval = " + "[" + p.confidenceLo() + ", " + p
-                        .confidenceHi() + ']');
+                .println("95% confidence interval = " + p.confidenceLo() + ", " + p
+                        .confidenceHi());
     }
 }

@@ -1,17 +1,5 @@
 /******************************************************************************
- *  Compilation:  javac WeightedQuickUnionUF.java
- *  Execution:  java WeightedQuickUnionUF < input.txt
- *  Dependencies: StdIn.java StdOut.java
- *  Data files:   https://algs4.cs.princeton.edu/15uf/tinyUF.txt
- *                https://algs4.cs.princeton.edu/15uf/mediumUF.txt
- *                https://algs4.cs.princeton.edu/15uf/largeUF.txt
- *
- *  Weighted quick-union (without path compression).
- *
  ******************************************************************************/
-
-package edu.princeton.cs.algs4;
-
 /**
  *  The {@code WeightedQuickUnionUF} class represents a <em>union–find data type</em>
  *  (also known as the <em>disjoint-sets data type</em>).
@@ -169,16 +157,7 @@ public class WeightedQuickUnionUF {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        int n = StdIn.readInt();
-        WeightedQuickUnionUF uf = new WeightedQuickUnionUF(n);
-        while (!StdIn.isEmpty()) {
-            int p = StdIn.readInt();
-            int q = StdIn.readInt();
-            if (uf.find(p) == uf.find(q)) continue;
-            uf.union(p, q);
-            StdOut.println(p + " " + q);
-        }
-        StdOut.println(uf.count() + " components");
+   
     }
 
 }

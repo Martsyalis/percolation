@@ -4,8 +4,6 @@
  *  Last modified:     1/1/2019
  **************************************************************************** */
 
-import edu.princeton.cs.algs4.WeightedQuickUnionUF;
-
 public class Percolation {
 
     private final int nSquared;
@@ -102,9 +100,7 @@ public class Percolation {
         }
     }
 
-    // main method is empty
     public static void main(String[] args) {
-        // empty
         Percolation a = new Percolation(3);
         a.open(1, 3);
         a.open(2, 3);
@@ -114,7 +110,5 @@ public class Percolation {
         a.open(1, 2);
         System.out.println(a.isFull(1, 2));
         System.out.println(a.isFull(1, 1));
-
-
     }
 }
